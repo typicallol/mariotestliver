@@ -1,21 +1,21 @@
 import UIKit
 import AVKit
-import SwiftUI // Add this import
+import PlaygroundSupport
 
 class ViewController: UIViewController {
     
-    var audioPlayer: AVAudioPlayer! // Removed @State as it's not used here
+    var audioPlayer: AVAudioPlayer!
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        displayAlert()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         // Initialize audio player
         if let sound = Bundle.main.path(forResource: "song", ofType: "wav") {
             self.audioPlayer = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound))
             self.audioPlayer.prepareToPlay()
         }
+        
+        displayAlert()
     }
 
     func displayAlert() {
@@ -37,6 +37,7 @@ class ViewController: UIViewController {
                 self.audioPlayer.prepareToPlay()
                 self.audioPlayer.play()
             }
+            displayAlert()
         }
         
         // Add OK and Cancel button to dialog message
@@ -51,3 +52,7 @@ class ViewController: UIViewController {
         print("Delete record function called")
     }
 }
+
+// Present the view controller in the playground
+let viewController = ViewController()
+PlaygroundPage.current.liveView = viewController
