@@ -3,6 +3,7 @@ import AVKit
 import PlaygroundSupport
 
 class ViewController: UIViewController {
+    
     var audioPlayer: AVAudioPlayer!
     
     override func viewDidLoad() {
@@ -15,10 +16,6 @@ class ViewController: UIViewController {
         }
         
         // Start the alert loop
-        displayAlertLoop()
-    }
-    
-    func displayAlertLoop() {
         displayAlert()
     }
     
@@ -41,6 +38,11 @@ class ViewController: UIViewController {
                 self.audioPlayer.prepareToPlay()
                 self.audioPlayer.play()
             }
+            
+            // Re-display the alert after a delay
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.displayAlert()
+            }
         }
         
         // Add OK and Cancel button to dialog message
@@ -56,8 +58,6 @@ class ViewController: UIViewController {
     }
 }
 
-// Create an instance of the view controller
-let viewController = ViewController()
-
 // Present the view controller in the playground
+let viewController = ViewController()
 PlaygroundPage.current.liveView = viewController
