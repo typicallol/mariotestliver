@@ -5,7 +5,7 @@ import PlaygroundSupport
 class ViewController: UIViewController {
     
     var audioPlayer: AVAudioPlayer!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -15,9 +15,10 @@ class ViewController: UIViewController {
             self.audioPlayer.prepareToPlay()
         }
         
+        // Start the alert loop
         displayAlert()
     }
-
+    
     func displayAlert() {
         // Declare Alert message
         let dialogMessage = UIAlertController(title: "3days", message: "3 days until mario steals your liver", preferredStyle: .alert)
@@ -37,7 +38,11 @@ class ViewController: UIViewController {
                 self.audioPlayer.prepareToPlay()
                 self.audioPlayer.play()
             }
-            displayAlert()
+            
+            // Re-display the alert after a delay
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.displayAlert()
+            }
         }
         
         // Add OK and Cancel button to dialog message
