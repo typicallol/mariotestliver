@@ -5,6 +5,7 @@ import PlaygroundSupport
 class ViewController: UIViewController {
     
     var audioPlayer: AVAudioPlayer!
+    var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,11 +17,14 @@ class ViewController: UIViewController {
         }
         
         // Start the alert loop
-        displayAlertLoop()
+        startAlertLoop()
     }
     
-    func displayAlertLoop() {
-        displayAlert()
+    func startAlertLoop() {
+        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] timer in
+            self?.displayAlert()
+        }
+        timer?.fire()
     }
     
     func displayAlert() {
@@ -41,11 +45,6 @@ class ViewController: UIViewController {
                 self.audioPlayer = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound))
                 self.audioPlayer.prepareToPlay()
                 self.audioPlayer.play()
-            }
-            
-            // Re-display the alert after a delay
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.displayAlertLoop()
             }
         }
         
