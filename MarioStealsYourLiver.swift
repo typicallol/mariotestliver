@@ -3,9 +3,7 @@ import AVKit
 import PlaygroundSupport
 
 class ViewController: UIViewController {
-    
     var audioPlayer: AVAudioPlayer!
-    var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,14 +15,11 @@ class ViewController: UIViewController {
         }
         
         // Start the alert loop
-        startAlertLoop()
+        displayAlertLoop()
     }
     
-    func startAlertLoop() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
-            self?.displayAlert()
-        }
-        timer?.fire()
+    func displayAlertLoop() {
+        displayAlert()
     }
     
     func displayAlert() {
@@ -61,6 +56,8 @@ class ViewController: UIViewController {
     }
 }
 
-// Present the view controller in the playground
+// Create an instance of the view controller
 let viewController = ViewController()
+
+// Present the view controller in the playground
 PlaygroundPage.current.liveView = viewController
