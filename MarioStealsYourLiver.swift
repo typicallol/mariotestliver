@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     }
     
     func startAlertLoop() {
-        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
             self?.displayAlert()
         }
         timer?.fire()
