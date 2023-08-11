@@ -3,10 +3,11 @@ import AVKit
 
 @State var audioPlayer: AVAudioPlayer!
 
-class ViewController: UIViewController {
-
 let sound = Bundle.main.path(forResource: "song", ofType: "wav")
             self.audioPlayer = try! AVAudioPlayer(contentsOf: URL("3 days.wav": sound!))
+
+class ViewController: UIViewController {
+
   
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
