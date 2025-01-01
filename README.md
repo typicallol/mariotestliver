@@ -1,0 +1,1 @@
+based off of the "3days until mario steals your liver meme", and inspired by Bibo on itch, this is a ios version of the app they created. this is still a work in progress as i dont have a mac (kinda broke rn) so ya stay tuned
